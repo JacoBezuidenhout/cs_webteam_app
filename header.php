@@ -1,12 +1,14 @@
 <?php
+/*
 
 	$db = mysql_connect("localhost","root","5226");
 
 	if (!$db) {
     		die('Could not connect: ' . mysql_error());
 	}
-
-	mysql_query("USE cswebapp",$db);
+	else
+		mysql_query("USE cswebapp",$db);
+*/
 
 ?>
 
@@ -23,5 +25,13 @@
 	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
 
+<style>
+
+body, html {
+  height: 100%;
+}
+
+</style>
+
 </head>
-<body class=>
+<body>

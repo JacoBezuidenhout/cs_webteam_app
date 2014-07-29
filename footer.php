@@ -6,6 +6,6 @@
 
 <?php
 
-	mysql_close($db);
+//	mysql_close($db);
 
 ?>
