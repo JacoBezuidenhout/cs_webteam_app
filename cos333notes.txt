@@ -1,0 +1,84 @@
+sigma term algebra: set of var X of all possible sorts of your sort
+fi gives your var values
+
+atomic terms - actual values (3 4 5 A N Y)
+composite terms - 2+3 5-9 5*D
+
+Algebra->sigma term algebra->abstract stack machine
+
+Algebra -> find sigma term algebra -> translate to something the machine understand (trans functions) (abstract stack machine)
+
+trans function (ASM) translate from sigma term into ASM code (page 22)
+
+ASM have stack and memory (fi) = (x=2, y=6)
+
+LOAD X
+Exec f where f is an operation
+
+Program = {gamma1 gamma2 .... gammap} stack of commands
+
+E(program statement) from statespace (SS) to other state
+E(LOAD x)
+E(Exec f)
+
+
+reduction strategies
+ - should eventually stop neupharient
+ - confluent no matter the order, will get same result
+ 
+ page 16 notation: u is "the meaning of t depends on fi and alpha?"
+ 
+ alpha maps symbols to what it does
+ 
+ Prac:
+ 
+ 1: in: sigma algebra term -> code for stack machine
+ 	x+3 = add(x,3)
+ 	trans(+(x,3))=trans(x) = load X; trans(3) load 3; Exec(+) 
+ 	O(X) txt file; O(X)=2
+
+ 	
+ 2: in: code for stack machine -> simulate commands
+  	[] -> load x -> [2] -> load 3 -> [3,2] -> exec + -> [5]
+  	
+  	
+  	Defining functions:
+  	
+  	page (somewhere) :)
+  	
+  	function def have a signature with a set of sorts and a set of opp symbols
+  	SIG = <S,E>
+  	Function is defined as taking input (f(x,y,t,r,w)) and give a term (t) as output
+  	
+  	pg 27, 28
+  	
+  	operational semantics
+  		you say wha ta func does by defining one
+  		1 - call by name (lazy one)
+  		2 - call by value (strict evaluation)
+  		
+  		denatational semantics
+  			define everyting as math object
+  			
+  			f(x) = 3 + x
+  			lamdax.3+x
+  			
+  	Bottom is just a way of dealing with something that is undefined
+  	if we dont know what it is, call it undefinbed
+  	
+  	supose func is div(x,y) = x/y
+  	
+  	div is a partial function (not all y is defined) only defined for natural numbers >0
+  	div' dash is a total funtion, if answer is defined, div(x,y) else bottom
+  	div hat can take bottom as input, if receive bottom, output bottom
+  	
+  	functionel capital sigma
+  	
+  	sigma is a function
+  		higher order function
+  		input function -> map to other funtion
+  		F(x) = x!
+  			unroles recursive function
+  		you want to unrole rec function infinately
+  		
+  	
