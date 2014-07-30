@@ -1,6 +1,6 @@
 <?php include "header.php"; 
 
-$type = 2;
+$type = $_GET["type"];
 
 if ($type == 0)
 {

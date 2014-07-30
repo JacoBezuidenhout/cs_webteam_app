@@ -32,6 +32,7 @@
 			  <div class="media-body">
 				<h4 class="media-heading">Media heading</h4>
 				<p>lonjkdslafh hda ksldakjg ksa gfklas fjksa khaskhf klagfa lfgkl</p>
+				<p><small><b>Category: </b> World Domination</small></p>
 			  </div>
 			  <small class="pull-right">by <a href="#">Jaco Bezuidenhout</a></small>
 			</div>

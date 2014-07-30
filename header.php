@@ -1,15 +1,5 @@
 <?php
-/*
-
-	$db = mysql_connect("localhost","root","5226");
-
-	if (!$db) {
-    		die('Could not connect: ' . mysql_error());
-	}
-	else
-		mysql_query("USE cswebapp",$db);
-*/
-
+	include "db.php";
 ?>
 
 <!DOCTYPE html>
