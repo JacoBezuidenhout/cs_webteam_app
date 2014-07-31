@@ -1,6 +1,6 @@
 <?php include "header.php"; 
 
-$type = $_GET["type"];
+$type = getUserType();
 
 if ($type == 0)
 {

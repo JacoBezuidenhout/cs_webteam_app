@@ -24,6 +24,8 @@
 
 	$cat_id = 0;
 	$cat_desc = "";
+        
+        $expire=time()+60*60*24*30;
 
 include "functions.php";
 
