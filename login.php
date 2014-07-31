@@ -30,13 +30,13 @@ if (($data["email"] <> "") && ($data["password"] <> ""))
         
             if ($data['cookie'] == "on")
             {
-                setcookie("session", $_SESSION, $expire);
+                $_COOKIE = $_SESSION;
             }
         }
         
     }
         
-    //header("Location: index.php");
+    header("Location: index.php");
     
 }
 
