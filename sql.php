@@ -17,7 +17,10 @@
 	$_sql_del_cat = "DELETE FROM `cat` WHERE `cat_id`={$cat_id};";
 	$_sql_del_post = "DELETE FROM `post` WHERE `post_id`={$post_id}; DELETE FROM `comment` WHERE `post_id`={$post_id};";
 /////////UPDATE
-        
+        $sql_update_user = "UPDATE `cswebapp`.`user` "
+                . "SET `user_email` = '{$email}', `user_password` = '{$password}', `user_name` = '$name', "
+                . "`user_surname` = '$name', `user_country` = '$country'"
+                . "WHERE `user`.`user_id` = '{$user_id}';";
 /////////SELECT
         $sql_select_login = "SELECT * FROM `user` WHERE user_email = '{$email}'";
         
