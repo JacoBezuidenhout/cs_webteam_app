@@ -1,5 +1,7 @@
 <?php
 //See POSTS and Search
+
+
 ?>
 
 <div class="row"  style="height:100%;">
@@ -10,32 +12,91 @@
         <h1 align="center">Evil Fluffy Plans</h1>
 
         <div class="col-lg-10 col-lg-offset-1 well">
-            <div class="input-group">
-                <input type="text" class="form-control">
-                <span class="input-group-btn">
-                    <button class="btn btn-primary" type="button">Search</button>
-                </span>
-            </div>
+            <form id="frmFilter" action="index.php" method="get">
+                
+                    <select class="form-control" name="cat" onchange="$('#frmFilter').submit();">
+                        <option value="-1" <?php if($_GET['cat'] == -1) echo "selected"; ?>>All</option>
+                        <?php
+                        $array = getCat();
+                        foreach ($array as $value) {
+                            ?>
+                            <option value="<?php echo $value['cat_id'] ?>" <?php if($_GET['cat'] == $value['cat_id']) echo "selected"; ?>><?php echo $value['cat_desc'] ?></option>
+                        <?php } ?>
+
+                    </select>
+                    
+                
+            </form>
         </div>
     </div>
     <div class="col-lg-5 col-lg-offset-1">
 
-<?php for ($k = 1; $k < 30; $k++) { ?>
+        <?php 
+        
+        $posts = getPosts();
+        //echo print_r($posts);
+        foreach ($posts as $post) { ?>
+
             <div class="col-lg-12 well well-sm" >
                 <div class="media">
                     <a class="pull-left" href="#">
                         <img class="media-object" src="http://placehold.it/64x64" alt="">
                     </a>
                     <div class="media-body">
-                        <h4 class="media-heading">Media heading</h4>
-                        <p>lonjkdslafh hda ksldakjg ksa gfklas fjksa khaskhf klagfa lfgkl</p>
-                        <p><small><b>Category: </b> World Domination</small></p>
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <h4 class="media-heading"><?php echo $post["post_title"]; ?></h4>
+                            </div>
+                            <div class="col-lg-4">
+
+                            </div>
+                        </div>
+                        <p><?php echo $post["post_body"]; ?></p>
                     </div>
-                    <small class="pull-right">by <a href="#">Jaco Bezuidenhout</a></small>
+                    <small class="pull-right">
+                        by <a href="profile.php?user_id=<?php echo $post["user_id"]; ?>"><?php echo getUserFullName($post["user_id"]); ?></a> 
+                        in <a href="index.php?cat=<?php echo $post["cat_id"]; ?>"><?php echo getCatDesc($post["cat_id"]); ?></a>
+                    </small>
                 </div>
+
+                <div class="panel-group" id="accordion">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h5 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $post["post_id"]; ?>">
+                                    <small>Comments <span class="badge"><?php echo getPostCommentCount($post["post_id"]); ?></span></small>
+                                </a>
+                            </h5>
+                        </div>
+                        <div id="collapse<?php echo $post["post_id"]; ?>" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <?php 
+                                
+                                $comments = getPostComments($post["post_id"]);
+                                
+                                foreach ($comments as $comment) { ?>
+
+                                    <div class="media">
+                                        <a class="pull-left" href="#">
+                                            <img class="media-object" src="http://placehold.it/45x45" alt="">
+                                        </a>
+                                        <div class="media-body">
+                                            <p><?php echo $comment["comment_body"]; ?></br>
+                                                <small>by <a href="#"><?php echo getUserFullName($comment["user_id"]); ?></a></small></p>
+                                        </div>
+                                    </div>
+
+                                <?php } ?>
+                               
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
-<?php } ?>
+        <?php } ?>
 
     </div>
     <div class="col-lg-5"  style="background-color:grey; height:100%; position:fixed; top:0px; right:0px;">

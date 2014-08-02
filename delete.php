@@ -12,22 +12,43 @@ echo \print_r($data);
 $type = $data['type'];
 
 if ($type == "comment") {
-
-    $comment_id = $data["id"];
-    include 'sql.php';
-    $sql = $_sql_del_comment;
+    $comment_id = $data["comment_id"];
+    if (getUserType() == 2) {
+        include 'sql.php';
+        $sql = $_sql_del_comment_admin;
+    } elseif (getUserType() == 1) {
+        $user_id = getUserID();
+        include 'sql.php';
+        echo $sql = $_sql_del_comment;
+    }
+    $result = mysql_query($sql, $GLOBALS['db']);
 }
+
 if ($type == "user") {
 
-    $user_id = $data["id"];
+    $user_id = $data['user_id'];
+
     include 'sql.php';
-    $sql = $_sql_del_user;
+    if (getUserType() == 2) {
+        echo $sql = $_sql_del_user;
+    }
+
+    $result = mysql_query($sql, $GLOBALS['db']);
+    if ($user_id == getUserID())
+        header("Location: logout.php");
 }
 if ($type == "post") {
 
-    $user_id = $data["id"];
+    $user_id = getUserID();
+    $post_id = $data["post_id"];
+
     include 'sql.php';
-    $sql = $_sql_del_post;
+    if (getUserType() == 1)
+        $sql = $_sql_del_post;
+    elseif (getUserType() == 2)
+        $sql = $_sql_del_post_admin;
+
+    $result = mysql_query($sql, $GLOBALS['db']);
 }
 if ($type == "cat") {
 
@@ -36,8 +57,5 @@ if ($type == "cat") {
     $sql = $_sql_del_cat;
 }
 
-$result = mysql_query($sql, $db);
-echo $sql;
-
-echo $result;
+header("Location: index.php");
 ?>

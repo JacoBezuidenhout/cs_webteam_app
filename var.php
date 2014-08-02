@@ -8,6 +8,7 @@
 	$type= 0; 
 	$password = ""; 
 	$country = "";
+	$user_type = "";
         
         $post_id = "";
 	$post_title = "";

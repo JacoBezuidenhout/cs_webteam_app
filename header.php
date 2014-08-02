@@ -1,8 +1,8 @@
 <?php
 include "db.php";
-if (isset($_COOKIE['session'])) {
+/*if (isset($_COOKIE['session'])) {
     $_SESSION = $_COOKIE['session'];
-}
+}*/
 ?>
 
 <!DOCTYPE html>

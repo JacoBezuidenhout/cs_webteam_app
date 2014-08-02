@@ -19,14 +19,7 @@ if (($data["email"] <> "") && ($data["password"] <> ""))
         
         if ($result["user_password"] == $data["password"])
         {
-            $_SESSION['login'] = true;
-            $_SESSION['name'] = $result['user_name'];
-            $_SESSION['email'] = $result['user_email'];
-            $_SESSION['surname'] = $result['user_surname'];
-            $_SESSION['user_id'] = $result['user_id'];
-            $_SESSION['type'] = $result['user_type'];
-            $_SESSION['country'] = $result['user_country'];
-            $_SESSION['hash'] = sha1($_SESSION["user_id"].$_SESSION["type"].$_SESSION["email"] . $_SESSION["name"] . $_SESSION["surname"] . "thisismymagicstr");
+            updateSessionInfo($result);
         
             if ($data['cookie'] == "on")
             {
