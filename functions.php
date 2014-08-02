@@ -151,6 +151,15 @@ function getUserType() {
         return 0;
 }
 
+function getUserTypeFromID($id) {
+
+    $query = "SELECT user_type FROM user WHERE user_id={$id}";
+    $result = mysql_query($query, $GLOBALS['db']);
+    $result = mysql_fetch_array($result);
+
+    return $result[0];
+}
+
 function getPostCount($id) {
 
     $query = "SELECT COUNT(user_id) FROM post WHERE user_id={$id}";
