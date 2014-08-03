@@ -1,4 +1,6 @@
-<?php include "header.php"; 
+<?php
+
+include "header.php";
 
 if (!isset($_GET['cat']))
     $_GET['cat'] = -1;
@@ -6,25 +8,25 @@ if (!isset($_GET['cat']))
 
 $type = getUserType();
 
-if ($type == 0)
-{
-	
-	include "guest.php";
-	
+if ($type == 0) {
+
+
+    if (isset($_REQUEST["register"]))
+        include "register.php";
+    else
+        include "guest.php";
 }
 
-if ($type == 1)
-{
+if ($type == 1) {
 
-	include "user.php";
-
+    include "user.php";
 }
 
-if ($type == 2)
-{
+if ($type == 2) {
 
-	include "admin.php";
-
+    include "admin.php";
 }
 
-include "footer.php"; ?>
+
+include "footer.php";
+?>

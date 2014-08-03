@@ -109,7 +109,9 @@
 
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Login</h3>
+                    <h3 class="panel-title">Login<a href="index.php?register=" class="btn btn-success pull-right">Register</a></h3>
+                    
+                    
                 </div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" action="login.php" method="post">

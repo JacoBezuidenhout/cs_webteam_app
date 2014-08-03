@@ -1,6 +1,11 @@
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-8 col-lg-offset-2">
         <h1 align="center">Admin Panel</h1>
+    </div>
+    <div class="col-lg-2">
+        <form action="logout.php">
+            <button class="pull-right btn btn-danger" type="submit"><span class="glyphicon glyphicon-log-out"></span> Logout</button>
+        </form>
     </div>
 </div>
 
